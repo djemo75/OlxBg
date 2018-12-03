@@ -1,0 +1,111 @@
+﻿@page
+@model SearchModel
+@{
+    ViewData["Title"] = @SearchModel.SearchWords;
+}
+<style>
+    .searchmain {
+        margin-bottom: 20px;
+    }
+    .maincategories {
+        display:none;
+    }
+</style>
+<section class="mainpage-gallery clr" id="mainpageAds">
+
+    <header style="margin-top:20px;">
+        <h3>Намерени @SearchModel.Count обяви</h3>
+        <p>Безплатни обяви - @SearchModel.SearchWords  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Населено място - @SearchModel.CityName</p>
+    </header>
+    <hr style="margin-top:-10px;"/>
+    <ul class="gallerywide clr normal" id="gallerywide">
+        
+            @*<li rel="" class="wrap tleft rel fleft ad_id7Elub " data-adnumber="1" data-id="113050067">
+                <div class="mheight tcenter">
+                    <a asp-page="./Details" asp-route-id="@item.ID">
+                        <img src="~/uploads/@Html.DisplayFor(modelItem => item.ImageName)" style="height:132px;width:171px;">
+                    </a>
+                </div>
+                <div class="inner">
+                    <h4 class="normal"><a asp-page="./Details" asp-route-id="@item.ID" class="link linkWithHash detailsLinkPromoted"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></a></h4>
+                    <div class="price ">@Html.DisplayFor(modelItem => item.Price) лв.</div>
+                </div>
+            </li>*@
+        
+
+
+
+
+            <table width="100%" cellspacing="0" cellpadding="0" id="offers_table" class="fixed offers breakword redesigned" summary="Обяви">
+                <tbody>
+                    </tr>
+                    @if(SearchModel.Count==0)
+                    {
+                        <p style="text-align:center;font-size:15px;line-height:50px;">Няма намерени резултати</p>
+                    }
+                    @foreach (var item in Model.Advert)
+                    {
+
+                        <tr class="wrap" rel="">
+                            <td class="offer  ">
+                                <div class="offer-wrapper">
+                                    <table width="100%" cellspacing="0" cellpadding="0" class="fixed breakword  ad_id7AcEl" summary="Oбява" data-id="112062789">
+                                        <tbody>
+                                            <tr>
+                                                <td width="150" rowspan="2" style="background:whitesmoke;">
+                                                    <a asp-page="./Details" asp-route-id="@item.ID" class="" title="" style="width: 100% !important;">
+                                                        <img class="fleft" src="~/uploads/@Html.DisplayFor(modelItem => item.ImageName)" style="width:100%">
+                                                    </a>
+                                                </td>
+                                                <td valign="top" class="title-cell">
+                                                    <div class="space rel">
+                                                        <h3 class="lheight22 margintop5">
+                                                            <a asp-page="./Details" asp-route-id="@item.ID" class="marginright5 link linkWithHash detailsLink">
+                                                                <strong>@Html.DisplayFor(modelItem => item.Title)</strong>
+                                                            </a>
+                                                        </h3>
+
+                                                        <p class="color-9 lheight16 margintop5">
+                                                            <small class="breadcrumb x-normal">
+                                                                @Html.DisplayFor(modelItem => item.Cat)
+                                                            </small>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td width="200" class="wwnormal tright td-price" valign="top">
+                                                    <div class="space inlblk rel">
+                                                        <p class="price" style="overflow: visible !important;">
+                                                            <strong>@Html.DisplayFor(modelItem => item.Price) лв.</strong>
+                                                        </p>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="bottom" class="bottom-cell">
+                                                    <div class="space rel">
+                                                        <p class="lheight16">
+                                                            <small class="breadcrumb x-normal" style="margin-bottom: -20px !important;margin-top:10px !important;">
+                                                                <span>
+                                                                    <i data-icon="location-filled"></i>@Html.DisplayFor(modelItem => item.Address)
+                                                                </span>
+                                                            </small>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                    </tbody>
+            </table>
+    </ul>
+</section>

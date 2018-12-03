@@ -1,0 +1,37 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+        <ul class="userbox fright marginleft10">
+
+            <li class="inlblk nowrap vtop noslash" id="my-account-link">
+                <div class="inlblk rel">
+                    <a href="../../Advertisements/Myadvert" title="Manage" class="userbox-login tdnone" id="topLoginLink">
+                        <div class="user-box__photo"><i data-icon="account"></i></div>
+                        <span class="link inlblk" data-cy="common_link_header_myaccount"><strong>@UserManager.GetUserName(User)</strong> </span>
+                    </a>
+                </div>
+            </li>
+            <li class="inlblk nowrap vtop noslash" id="my-account-link"><input type="submit" value="Logout!" style="margin-top:-3px;"/></li>
+        </ul>
+
+    </form>
+}
+else
+{
+    <ul class="userbox fright marginleft10">
+
+        <li class="inlblk nowrap vtop noslash" id="my-account-link">
+            <div class="inlblk rel">
+                <a href="../../Identity/Account/Login" class="userbox-login tdnone" id="topLoginLink">
+                    <div class="user-box__photo"><i data-icon="account"></i></div>
+                    <span class="link inlblk" data-cy="common_link_header_myaccount"><strong>My profile</strong> </span>
+                </a>
+            </div>
+        </li>
+    </ul>
+}

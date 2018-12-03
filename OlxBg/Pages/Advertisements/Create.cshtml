@@ -1,0 +1,84 @@
+﻿@page
+@model OlxBg.Pages.Advertisements.CreateModel
+
+@{
+    ViewData["Title"] = "Добавяне на обява";
+}
+<h2 style="margin-top:15px;">Добавяне на обява</h2>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 " style="text-align:right;">
+            <div class="form-group">
+                <label asp-for="Advert.Title" class="control-label" style="font-size:20px;">Заглавие на обявата<font color="red">*</font></label>
+            </div>
+            <div class="form-group">
+                <img src="~/images/category.png" style="display:inline;" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Advert.Description" class="control-label" style="font-size:20px;">Описание<font color="red">*</font></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advert.Price" class="control-label" style="font-size:20px;">Цена<font color="red">*</font></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advert.Author" class="control-label" style="font-size:20px;" value="">Автор<font color="red">*</font></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advert.Mobile" class="control-label" style="font-size:20px;">Телефон<font color="red">*</font></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advert.Address" class="control-label" style="font-size:20px;">Населено място<font color="red">*</font></label>
+            </div>
+            <div class="form-group">
+                <img src="~/images/choose-img.png" />
+            </div>
+        </div>
+        <div class="col-lg-4 ">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="Advert.Title" class="form-control" required/>
+                    <span asp-validation-for="Advert.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select asp-for="Advert.Cat" asp-items="@Model.Categories" class="form-control"></select>
+
+                </div><br />
+                <div class="form-group">
+                    <textarea asp-for="Advert.Description" class="form-control" required></textarea>
+                    <span asp-validation-for="Advert.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Advert.Price" class="form-control" required/>
+                    <span asp-validation-for="Advert.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Advert.Author" class="form-control" value="@this.User.Identity.Name" disabled/>
+                    <span asp-validation-for="Advert.Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Advert.Mobile" class="form-control" required/>
+                    <span asp-validation-for="Advert.Mobile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Advert.Address" class="form-control" required/>
+                    <span asp-validation-for="Advert.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="file" asp-for="Image" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Добави обява" class="btn btn-default" />
+                </div>
+            </form>
+            </div>
+        </div>
+
+    <div>
+        <a asp-page="Index">Върни се към твоите обяви</a>
+    </div>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

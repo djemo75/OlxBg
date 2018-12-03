@@ -1,0 +1,93 @@
+﻿@page
+@model AlladvertModel
+@{
+    ViewData["Title"] = "Всички обяви";
+}
+
+<section class="mainpage-gallery clr" id="mainpageAds">
+
+    <header style="margin-top:20px;">
+        <h3>Всички обяви</h3>
+        <p>Тук можеш да разгледаш всички обяви</p>
+    </header>
+    <ul class="gallerywide clr normal" id="gallerywide">
+        <table width="100%" cellspacing="0" cellpadding="0" id="offers_table" class="fixed offers breakword redesigned" summary="Обяви">
+            <tbody>
+                </tr>
+                @foreach (var item in Model.Advert)
+                {
+
+                    <tr class="wrap" rel="">
+                        <td class="offer  ">
+                            <div class="offer-wrapper">
+                                <table width="100%" cellspacing="0" cellpadding="0" class="fixed breakword  ad_id7AcEl" summary="Oбява" data-id="112062789">
+                                    <tbody>
+                                        <tr>
+                                            <td width="150" rowspan="2" style="background:whitesmoke;">
+                                                <a asp-page="./Details" asp-route-id="@item.ID" class="" title="" style="width: 100% !important;">
+                                                    <img class="fleft" src="~/uploads/@Html.DisplayFor(modelItem => item.ImageName)" style="width:100%">
+                                                </a>
+                                            </td>
+                                            <td valign="top" class="title-cell">
+                                                <div class="space rel">
+                                                    <h3 class="lheight22 margintop5">
+                                                        <a asp-page="./Details" asp-route-id="@item.ID" class="marginright5 link linkWithHash detailsLink">
+                                                            <strong>@Html.DisplayFor(modelItem => item.Title)</strong>
+                                                        </a>
+                                                    </h3>
+
+                                                    <p class="color-9 lheight16 margintop5">
+                                                        <small class="breadcrumb x-normal">
+                                                            @Html.DisplayFor(modelItem => item.Cat)
+                                                        </small>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td width="200" class="wwnormal tright td-price" valign="top">
+                                                <div class="space inlblk rel">
+                                                    <p class="price" style="overflow: visible !important;">
+                                                        <strong>@Html.DisplayFor(modelItem => item.Price) лв.</strong>
+                                                    </p>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="bottom" class="bottom-cell">
+                                                <div class="space rel">
+                                                    <p class="lheight16">
+                                                        <small class="breadcrumb x-normal" style="margin-bottom: -20px !important;margin-top:10px !important;">
+                                                            <span>
+                                                                <i data-icon="location-filled"></i>@Html.DisplayFor(modelItem => item.Address)
+                                                            </span>
+                                                        </small>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+
+            </tbody>
+        </table>
+
+    </ul>
+    <div class="pagination">
+        @if (Model.PageIndex != 1)
+        {
+            <a href="/Advertisements/Alladvert?pageIndex=@(Model.PageIndex - 1)" class="page-button">Назад</a>
+        }
+        @if (Model.HasNextPage)
+        {
+            <a href="/Advertisements/Alladvert?pageIndex=@(Model.PageIndex + 1)" class="page-button">Напред</a>
+        }
+    </div>
+</section>

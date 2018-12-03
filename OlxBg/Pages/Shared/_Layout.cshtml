@@ -1,0 +1,252 @@
+﻿@inject OlxBgContext Context
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - OlX</title>
+    <link rel="stylesheet" type="text/css" href="~/style/style.css">
+    <link rel="stylesheet" type="text/css" href="~/style/olx.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        .col-centered {
+            float: none;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header-container">
+        <div class="navi">
+            <div class="wrapper clr rel">
+                <div class="col-sm-12">
+                    <h1><a href="../../Advertisements/Index" id="headerLogo" class="abs website big" title="OLX.bg">OLX.bg</a></h1>
+                    <a id="postNewAdLink" data-cy="common_link_header_postnewad" class="postnewlink fbold tdnone" href="../../Advertisements/Create"><span>Добави обява</span></a>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="category-box">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-sm-10">
+
+                    <form class="searchmain" id="searchmain" method="GET" asp-page="/Advertisements/Search">
+                        <fieldset>
+                            <div class="fblock fquery fleft clr rel active">
+                                <div class="rel clr lheight16">
+                                    <div class="clearbox rel fleft input-container">
+                                        <input type="text" placeholder="Търсене..." data-cy="homepage_input_textsearch" class="fleft light large queryfield defaultval with-x-clear-button autosuggest-input ca2" id="headerSearch" value="" name="value" style="height: 36px;">
+                                        <a class="clear-input-button hidden" href="" data-icon="close"></a>
+                                    </div>
+                                    <i data-icon="search"></i>
+                                    <div id="autosuggest-div"></div>
+                                </div>
+                            </div>
+                            <div class="fblock fleft fcity clr rel active">
+                                <div class="locationrequest  has-dist-picker" id="locationBox">
+                                    <div class="clr rel">
+                                        <div class="rel fleft input-container">
+                                            <input id="cityField" style="height:36px;" placeholder="Населено място" name="city" type="text" data-cy="homepage_input_locationsearch" value="" class="with-x-clear-button fleft defaultval light cityfield ca2">
+                                            <div class="cityfield" id="cityFieldGray">
+                                                <span class="fbold vishid"></span><span class="color-9"></span>
+                                            </div>
+                                            <div class="distanceseparator abs"></div>
+                                            <i data-icon="location"></i>
+                                        </div>
+                                    </div>
+                                    <div class="suggest bottom abs zi2 br3 error hidden" id="cityFieldError" style="display: none;">
+                                        <p>Избери населено място</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <span class="button big4 fright br3">
+                                <i data-icon="search"></i>
+                                <input id="submit-searchmain" data-cy="homepage_button_search" type="submit" value="Търсене" class="cfff x-large margintop-1">
+                            </span>
+                        </fieldset>
+                    </form>
+                    <div class="maincategories">
+                        <div class="maincategories-list clr">
+                            <partial name="_CategoriesPartial" />
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section id="body-container">
+        <div></div>                <div></div>        <div class="wrapper">
+            <partial name="_CookieConsentPartial" />
+            @RenderBody()
+
+            @*<div class="tright more-link">
+                    <a href="" id="homeShowAllAds" class="tdnone">
+                        <strong class="link large inlblk rel">
+                            <span>Виж всички</span>
+                        </strong><i data-icon="raquo"></i>
+                    </a>
+                </div>*@
+        </div>
+    </section>
+
+
+    <footer id="footer-container">
+        <div class="wrapper small clr brbott-12 rel">
+            <div class="content brbott-5">
+                <div class="hr"></div>
+                <div class="pding15_0 siteinfobox clr">
+                    <div class="socialsbox clr" id="footertopShare">
+                        <div class="icon claim abs"></div>
+                    </div>
+                    <div class="overh text">
+                        <div>
+                            <div class="small lheight16">
+                                <p class="c73">
+                                    OLX.bg e сайт за безплатни обяви в категории: Недвижими имоти, Автомобили и авточасти, Eлектроника, Мода, За бебето и детето, Дом и градина, Свободно време, Домашни любимци, Услути, Работа, Екскурзии и почивки. Тук може да намериш интересни обяви и лесно да се свържеш с продавача. Ако искаш да купиш нещо - може да намериш атрактивни предложения на цени, по-ниски, отколкото в магазина. Ако искаш да продадеш нещо - можеш да <a href="../../Advertisements/Create">добавиш обява</a> бързо, лесно и безплатно (до определен лимит) и да пуснеш за продажба практически всичко, за което се сетиш. Купувай и продавай в OLX.bg!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overh brtop-1 pding15_0">
+                    <h3 class="lheight16 c73 fbold inline">Главни категории:</h3>
+                    @foreach (var category in Context.Categories)
+                    {
+                    <a asp-page="./Result_category" asp-route-id="@category.ID" class="link gray2 tunder">
+                    <span>@category.Title</span>
+                    </a>
+                    }
+                </div>
+                <div class="overh brtop-1 pding15_0">
+                    <h3 class="lheight16 c73 fbold inline">Популярни търсения:</h3>
+                    <a href="../../Advertisements/Search?value=nike&city=" title="Nike" class="link gray2 tunder"><span>Nike</span></a>,
+                    <a href="../../Advertisements/Search?value=adidas&city=" title="Adidas" class="link gray2 tunder"><span>Adidas</span></a>,
+                    <a href="../../Advertisements/Search?value=диван&city=" title="Диван" class="link gray2 tunder"><span>Диван</span></a>,
+                    <a href="../../Advertisements/Search?value=яке&city=" title="Яке" class="link gray2 tunder"><span>Яке</span></a>,	
+                    <a href="../../Advertisements/Search?value=бартер&city=" title="Бартер" class="link gray2 tunder"><span>Бартер</span></a>,
+                    <a href="../../Advertisements/Search?value=естествена+кожа&city=" title="Естествена кожа" class="link gray2 tunder"><span>Естествена кожа</span></a>,	
+                    <a href="../../Advertisements/Search?value=iphone+6&city=" title="Iphone 6" class="link gray2 tunder"><span>Iphone 6</span></a>,	
+                    <a href="../../Advertisements/Search?value=bmw&city=" title="Bmw" class="link gray2 tunder"><span>Bmw</span></a>,	
+                    <a href="../../Advertisements/Search?value=iphone+7&city=" title="Iphone 7" class="link gray2 tunder"><span>Iphone 7</span></a>,
+                    <a href="../../Advertisements/Search?value=трактор&city=" title="Трактор" class="link gray2 tunder"><span>Трактор</span></a>,	
+                    <a href="../../Advertisements/Search?value=област&city=" title="Област" class="link gray2 tunder"><span>Област</span></a>,
+                    <a href="../../Advertisements/Search?value=ps4&city=" title="Ps4" class="link gray2 tunder"><span>Ps4</span></a>,	
+                    <a href="../../Advertisements/Search?value=205+55+16&city=" title="205 55 16" class="link gray2 tunder"><span>205 55 16</span></a>,
+                    <a href="../../Advertisements/Search?value=нож&city=" title="Нож" class="link gray2 tunder"><span>Нож</span></a>,		
+                    <a href="../../Advertisements/Search?value=iphone+x&city=" title="Iphone x" class="link gray2 tunder"><span>Iphone x</span></a>,		
+                    <a href="../../Advertisements/Search?value=sony&city=" title="Sony" class="link gray2 tunder"><span>Sony</span></a>,					
+                    <a href="../../Advertisements/Search?value=zara&city=" title="Zara" class="link gray2 tunder"><span>Zara</span></a>,					
+                    <a href="../../Advertisements/Search?value=струг&city=" title="Струг" class="link gray2 tunder"><span>Струг</span></a>,	
+                    <a href="../../Advertisements/Search?value=g+star&city=" title="G star" class="link gray2 tunder"><span>G star</span></a>,						
+                    <a href="../../Advertisements/Search?value=ремарке&city=" title="Ремарке" class="link gray2 tunder"><span>Ремарке</span></a>
+
+                </div>
+            </div>
+        </div>	<div class="wrapper small" id="lastwrapper">
+            <div class="margintop15 clr rel">
+                <div class="fleft">
+                    <p>
+                        <span class="websitegray inlblk vtop" title="OLX.bg - OLX България">&nbsp;</span>
+                    </p>
+                </div>
+                <div class="boxindent">
+                    <div class="clr">
+
+                        <div class="footerapps fright rel tcenter">
+                            <a href="https://play.google.com/store/apps/details?id=com.sirmamobile.prodavalnik&amp;utm_source=mobpage&amp;utm_medium=page&amp;utm_campaign=button_android&amp;referrer=utm_source%3Dolx.bg%26utm_medium%3Dcpc%26utm_campaign%3Dandroid-app-footer" id="footerAppAndroid" target="_blank" class="inlblk">
+                                <span class="icon block googleplay"> в Google Play</span>
+                                <span class="tag-line tleft hidden">
+                                    Свали от			<strong class="block">Google Play</strong>
+                                </span>
+                            </a>
+                            <a href="https://itunes.apple.com/bg/app/prodavalnik/id688184262?mt=8&amp;utm_source=mobpage&amp;utm_medium=page&amp;utm_campaign=button_ios" id="footerAppIphone" target="_blank" class="inlblk">
+                                <span class="icon block appstore"> в AppStore</span>
+                                <span class="tag-line hidden">
+                                    Свали от			<strong class="block">AppStore</strong>
+                                </span>
+                            </a>
+                            <p class="tag-line">Свали приложението на OLX за твоя телефон!</p>
+                        </div>
+                    </div>
+                    <div class="partners box margin10_0 hidden" id="footerPartnersContainer">
+                        <ul class="clr">
+                            <li class="part25 fleft">
+                                <a href="https://www.olx.pl" target="_blank" class="link gray">
+                                    <span class="icon fleft flag olxpl"></span><span>OLX.pl</span>
+                                </a>
+                            </li>
+                            <li class="part25 fleft">
+                                <a href="https://www.olx.ro" target="_blank" class="link gray">
+                                    <span class="icon fleft flag olxro"></span><span>OLX.ro</span>
+                                </a>
+                            </li>
+                            <li class="part25 fleft">
+                                <a href="https://www.olx.ua/" target="_blank" class="link gray">
+                                    <span class="icon fleft flag olxua"></span><span>OLX.ua</span>
+                                </a>
+                            </li>
+                            <li class="part25 fleft">
+                                <a href="https://www.tradus.com" target="_blank" class="link gray">
+                                    <span class="icon fleft flag tradus"></span><span>tradus.com</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+                <div id="mobileAppsbadge" class="fix hidden">
+                    <a href="https://www.econt.com/services/econtomat?utm_source=olx&amp;utm_medium=display&amp;utm_campaign=OLX_August_2018&amp;utm_content=pin" class="icon tdnone abs"></a>
+                    <a href="#" id="mobileAppsbadgeClose" class="tdnone abs" title="Затвори">x</a>
+                </div>
+                <ul id="mobile_change" class="breaklist version tcenter margintop15" style="display: none">
+                    <li class="inline">
+                        <a href="https://www.olx.bg/disable/m/" rel="nofollow">Мобилна версия</a>
+                    </li>
+                    <li class="inline">
+                        <a href="https://www.olx.bg/disable/i/" rel="nofollow">Версия с докосване</a>
+                    </li>
+                    <li class="inline">
+                        <span>Пълна версия</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,111 @@
+body {
+	background: gray;
+}
+.top-box {
+	border-bottom: 1px solid #f0f0f0;
+	width:100%;
+	position: absolute;
+}
+.logo {
+	height: 70px;
+    width: 70px;
+    background: url(https://static-olxeu.akamaized.net/static/olxbg/packed/font/2f4f22766be42e5eac379976b5237b92ca.svg);
+    display: inline-block;
+    position: relative;
+    left: -10px;
+    top: 44px;
+}
+.category-box {
+	background: #f7f7f7;
+    border-bottom: 1px solid #f0f0f0;
+}
+.item {
+	margin-bottom:20px;
+}
+.searchmain {
+	margin-top:20px;
+}
+.inner {
+	padding-top:3px !important;
+
+}
+.hr {
+	border-bottom: 1px solid #f0f0f0;
+	margin-top:5px;
+}
+.edit-icon {
+	display:inline;
+	margin-right:5px;
+}
+.edit-icon:hover {
+	opacity:0.8;
+}
+.delete-icon {
+	display:inline;
+	margin-left:5px;
+}
+.delete-icon:hover {
+	opacity:0.8;
+}
+.buttons-box {
+	    text-align: center;
+    position: absolute;
+    margin-left: 47px;
+    margin-top: 5px;
+}
+.detail-image {
+	max-height:300px;
+	max-width:500px;
+	border:1px solid lightgray;
+	border-radius:2px;
+}
+.price-label {
+    padding: 9px 5px;
+    margin: 20px 0 10px -5px;
+    position: relative;
+    border: 1px solid #efefef;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    background: #fff;
+    color: #414e41;
+    text-align: center;
+    line-height: 34px;
+    height: 49px;
+    z-index: 2;
+}
+.info-box {
+	text-align: center;
+    border: 1px solid #ff8300;
+    border-radius: 4px;
+    padding: 10px;
+    margin-right: 7px;
+	font-size:15px;
+	font-weight: 300;
+	margin-bottom: 50px;
+}
+.breadcrumb {
+	background:white !important;
+}
+.no-advert{
+	padding-top: 140px;
+    background: url(https://static-olxeu.akamaized.net/static/olxbg/packed/font/2f5bd32982e77c7156a6097a34c7c96dcc.svg) center 0 no-repeat;
+    background-size: 117px 114px;
+	margin-right: 15px;
+}
+.pagination {
+	margin-top: 20px;
+    margin-bottom: 10px;
+}
+.page-button {
+	margin-right: 15px;
+    background: #0098d0;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.pagination a:hover {
+	color:white;
+	text-decoration:none;
+	background: #04bcff;
+}

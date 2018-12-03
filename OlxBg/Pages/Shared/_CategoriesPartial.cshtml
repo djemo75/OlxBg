@@ -1,0 +1,13 @@
+﻿@inject OlxBgContext Context
+
+@foreach (var category in Context.Categories)
+{
+        <div class="li fleft">
+            <div class="item">
+                <a asp-page="./Result_category" asp-route-id="@category.ID" class="link parent">
+                    <span>@category.Title</span>
+                    <span class="cat-icon cat-icon-circle cat-icon-368"></span>
+                </a>
+            </div>
+        </div>
+        }

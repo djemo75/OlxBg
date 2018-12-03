@@ -1,0 +1,29 @@
+﻿@page
+@model Result_categoryModel
+@{
+    ViewData["Title"] = "Обяви по категории";
+}
+<section class="mainpage-gallery clr" id="mainpageAds">
+
+    <header>
+        <h3>Всички обяви за категория - <input asp-for="Categories.Title" style="border:0px;width:300px;" readonly /></h3>
+    </header>
+    <ul class="gallerywide clr normal" id="gallerywide">
+        @foreach (var item in Model.Advert)
+        {
+            <li rel="" class="wrap tleft rel fleft ad_id7Elub " data-adnumber="1" data-id="113050067">
+                <div class="mheight tcenter">
+                    <a asp-page="./Details" asp-route-id="@item.ID">
+                        <img src="~/uploads/@Html.DisplayFor(modelItem => item.ImageName)" style="height:132px;width:171px;">
+                    </a>
+                </div>
+                <div class="inner">
+                    <h4 class="normal"><a asp-page="./Details" asp-route-id="@item.ID" class="link linkWithHash detailsLinkPromoted"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></a></h4>
+                    <div class="price ">@Html.DisplayFor(modelItem => item.Price) лв.</div>
+                </div>
+            </li>
+        }
+
+    </ul>
+
+</section>

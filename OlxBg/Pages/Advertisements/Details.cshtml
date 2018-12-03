@@ -1,0 +1,47 @@
+﻿@page "{id}"
+@model OlxBg.Pages.Advertisements.DetailsModel
+
+@{
+    ViewData["Title"] = @Html.DisplayFor(model => model.Advert.Title);
+}
+<style>
+    .category-box {
+        display: none !important;
+    }
+</style>
+<section class="mainpage-gallery clr" id="mainpageAds">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <header style="margin-top:20px;">
+                    <h3>> @Html.DisplayFor(model => model.Advert.Title)</h3>
+                    <p> @Html.DisplayFor(model => model.Advert.Cat)</p>
+                </header>
+                <img src="~/uploads/@Html.DisplayFor(model => model.Advert.ImageName)" class="detail-image" />
+                <p>@Html.DisplayFor(model => model.Advert.Description)</p>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="price-label">
+                    <strong class="xxxx-large not-arranged">@Html.DisplayFor(model => model.Advert.Price) лв.</strong>
+                </div>
+                <div class="info-box">
+                    Телефон:<br />
+                    @Html.DisplayFor(model => model.Advert.Mobile)
+                    <br />
+                    Добавил:<br />
+                    @Html.DisplayFor(model => model.Advert.Author)
+
+                    <br />
+                    Адрес:<br />
+                    @Html.DisplayFor(model => model.Advert.Address)
+                </div>
+
+            </div>
+            <div>
+                <a href="../../Advertisements">Върни към обявите</a>
+            </div>
+        </div>
+        </div>
+</section>
